@@ -1,0 +1,62 @@
+{
+    "app": "Wiki",
+    "name": "wiki",
+    "namespace": "Nemundo\\Wiki",
+    "is_deleted": false,
+    "model": [
+        {
+            "template": "default",
+            "model_id": "46154325-fc13-4a65-bc72-abacaf64cea7",
+            "label": "Wiki",
+            "class_name": "Wiki",
+            "table_name": "wiki_wiki",
+            "namespace": "Nemundo\\Wiki\\Data\\Wiki",
+            "row_class_name": "",
+            "primary_index": "unique_id",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "text",
+                    "label": "Title",
+                    "field_name": "title",
+                    "variable_name": "title",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "length": "255"
+                }
+            ],
+            "index": []
+        },
+        {
+            "template": "default",
+            "model_id": "976328e6-9f25-4ee3-935e-7d26f92c2345",
+            "label": "Wiki Type",
+            "class_name": "WikiType",
+            "table_name": "wiki_wiki_type",
+            "namespace": "Nemundo\\Wiki\\Data\\WikiType",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Content Type",
+                    "field_name": "content_type",
+                    "variable_name": "contentType",
+                    "allow_null": false,
+                    "is_deleted": false,
+                    "external_model_id": "69c1a9f4-3412-4446-92a4-2e81a75bed3f"
+                }
+            ],
+            "index": [
+                {
+                    "index_name": "content_type",
+                    "index_type": "unique_index",
+                    "field_name": [
+                        "content_type"
+                    ]
+                }
+            ]
+        }
+    ]
+}
