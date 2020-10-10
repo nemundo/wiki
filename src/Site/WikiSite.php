@@ -24,6 +24,8 @@ class WikiSite extends AbstractSite
 
         new WikiNewSite($this);
         //new AdminSite($this);
+        new ContentTypeAddSite($this);
+
 
     }
 

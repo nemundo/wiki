@@ -7,6 +7,7 @@ namespace Nemundo\Wiki\Page;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Wiki\Com\WikiTypeDropdown;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Wiki\Parameter\WikiParameter;
@@ -51,6 +52,10 @@ class WikiPage extends WikiTemplate
 
             $title = new AdminTitle($layout->col2);
             $title->content = $wikiType->getSubject();
+
+
+            $dropdown=new WikiTypeDropdown($layout->col2);
+
 
             //$container = new CmsEditorContainer($layout->col2);
             //$container->contentType = $wikiType;
