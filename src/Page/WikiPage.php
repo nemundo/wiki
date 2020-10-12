@@ -53,8 +53,16 @@ class WikiPage extends WikiTemplate
             $title = new AdminTitle($layout->col2);
             $title->content = $wikiType->getSubject();
 
-
             $dropdown=new WikiTypeDropdown($layout->col2);
+            //$wikiType->getView($layout->col2);
+
+            foreach ($wikiType->getChild() as $child) {
+
+                $type = $child->getContentType();
+                $type->getView($layout->col2);
+
+            }
+
 
 
             //$container = new CmsEditorContainer($layout->col2);

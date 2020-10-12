@@ -14,8 +14,8 @@ class WikiPageContentView extends AbstractContentView
     public function getContent()
     {
 
-        $container = new CmsContainer($this);
-        $container->contentType = $this->contentType;
+        //$container = new CmsContainer($this);
+        //$container->contentType = $this->contentType;
 
         return parent::getContent();
 
