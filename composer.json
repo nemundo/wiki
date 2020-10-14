@@ -10,5 +10,10 @@
   ],
   "require": {
     "nemundo/content": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nemundo\\Wiki\\": "src/"
+    }
   }
 }
