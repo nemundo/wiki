@@ -1,16 +1,12 @@
 <?php
 
-namespace Nemundo\Wiki\Site;
+namespace Nemundo\Wiki\Site\Content;
 
+use Nemundo\Content\Parameter\ContentParameter;
 use Nemundo\Dev\App\Factory\DefaultTemplateFactory;
 use Nemundo\Package\FontAwesome\Site\AbstractEditIconSite;
 use Nemundo\Wiki\Parameter\WikiParameter;
-use Nemundo\Wiki\Type\WikiContentTypeCollection;
-use Nemundo\Content\Data\Content\ContentReader;
-use Nemundo\Content\Parameter\ContentParameter;
-use Nemundo\Content\Parameter\DataParameter;
-use Nemundo\Content\Site\ContentItemSite;
-use Nemundo\Web\Site\AbstractSite;
+use Nemundo\Wiki\Site\WikiSite;
 
 class ContentEditSite extends AbstractEditIconSite
 {
@@ -22,10 +18,10 @@ class ContentEditSite extends AbstractEditIconSite
 
     protected function loadSite()
     {
-        $this->title = 'ContentEdit';
+        $this->title = 'Content Edit';
         $this->url = 'contentedit';
 
-        ContentEditSite::$site=$this;
+        ContentEditSite::$site = $this;
 
     }
 
@@ -34,15 +30,16 @@ class ContentEditSite extends AbstractEditIconSite
 
         $page = (new DefaultTemplateFactory())->getDefaultTemplate();
 
+        $contentParameter = new ContentParameter();
+        $contentParameter->contentTypeCheck = false;
 
-        $contentParameter=new ContentParameter();
-        $contentParameter->addAllowedContentTypeCollection(new WikiContentTypeCollection());
+        //$contentParameter->addAllowedContentTypeCollection(new WikiContentTypeCollection());
 
         $contentType = $contentParameter->getContentType();  // $contentRow->getContentType();
         $form = $contentType->getForm($page);
         //$form->dataId=$contentRow->id;
 
-        $form->redirectSite= WikiSite::$site;
+        $form->redirectSite = WikiSite::$site;
         $form->redirectSite->addParameter(new WikiParameter());
 
         $page->render();

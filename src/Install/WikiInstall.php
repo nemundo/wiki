@@ -5,20 +5,15 @@ namespace Nemundo\Wiki\Install;
 
 
 use Nemundo\App\Script\Setup\ScriptSetup;
+use Nemundo\Content\Setup\ContentTypeSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
-use Nemundo\Process\App\Video\Content\YouTube\YouTubeContentType;
-use Nemundo\Wiki\Content\TitleChange\TitleChangeContentType;
+use Nemundo\Project\Install\AbstractInstall;
+use Nemundo\Roundshot\Usergroup\WikiEditorUsergroup;
+use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\WikiCollection;
-use Nemundo\Wiki\Group\Type\WikiGroupType;
-use Nemundo\Wiki\Group\WikiEditorGroup;
 use Nemundo\Wiki\Script\WikiCleanScript;
-use Nemundo\Process\Cms\Setup\CmsSetup;
-use Nemundo\Content\Setup\ContentTypeSetup;
-use Nemundo\Process\Group\Setup\GroupSetup;
-use Nemundo\Process\Template\Content\Image\ImageContentType;
-use Nemundo\Process\Template\Content\Text\TextContentType;
-use Nemundo\Project\Install\AbstractInstall;
+
 
 class WikiInstall extends AbstractInstall
 {
@@ -47,6 +42,9 @@ class WikiInstall extends AbstractInstall
 
         (new ScriptSetup())
             ->addScript(new WikiCleanScript());
+
+        (new UsergroupSetup())
+            ->addUsergroup(new WikiEditorUsergroup());
 
 
         //$setup = new WikiSetup();

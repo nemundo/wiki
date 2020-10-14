@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Wiki\Site;
+namespace Nemundo\Wiki\Site\Content;
 
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Content\Data\Content\ContentReader;

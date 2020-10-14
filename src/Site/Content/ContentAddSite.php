@@ -1,6 +1,6 @@
 <?php
 
-namespace Nemundo\Wiki\Site;
+namespace Nemundo\Wiki\Site\Content;
 
 use Nemundo\Com\Template\TemplateDocument;
 use Nemundo\Content\Parameter\ContentTypeParameter;
@@ -8,20 +8,20 @@ use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Parameter\WikiParameter;
 
-class ContentTypeAddSite extends AbstractSite
+class ContentAddSite extends AbstractSite
 {
 
     /**
-     * @var ContentTypeAddSite
+     * @var ContentAddSite
      */
     public static $site;
 
     protected function loadSite()
     {
-        $this->title = 'ContentType Add';
+        $this->title = 'Content Add';
         $this->url = 'contenttypeadd';
         $this->menuActive = false;
-        ContentTypeAddSite::$site = $this;
+        ContentAddSite::$site = $this;
     }
 
     public function loadContent()

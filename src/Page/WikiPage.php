@@ -4,17 +4,21 @@
 namespace Nemundo\Wiki\Page;
 
 
+use Nemundo\Admin\Com\Button\AdminIconSiteButton;
+use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Content\Parameter\ContentParameter;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Wiki\Com\WikiTypeDropdown;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Site\Content\ContentEditSite;
+use Nemundo\Wiki\Site\Content\ContentRemoveSite;
+use Nemundo\Wiki\Site\WikiDeleteSite;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Wiki\Template\WikiTemplate;
-use Nemundo\Process\Cms\Com\Container\CmsEditorContainer;
-use Nemundo\Content\Com\Table\ContentLogTable;
 
 class WikiPage extends WikiTemplate
 {
@@ -53,16 +57,37 @@ class WikiPage extends WikiTemplate
             $title = new AdminTitle($layout->col2);
             $title->content = $wikiType->getSubject();
 
-            $dropdown=new WikiTypeDropdown($layout->col2);
+            $dropdown = new WikiTypeDropdown($layout->col2);
             //$wikiType->getView($layout->col2);
+
+            $btn=new AdminIconSiteButton($layout->col2);
+            $btn->site= clone(WikiDeleteSite::$site);
+            $btn->site->addParameter(new WikiParameter($wikiId));
 
             foreach ($wikiType->getChild() as $child) {
 
                 $type = $child->getContentType();
                 $type->getView($layout->col2);
 
-            }
+                $site = clone(ContentEditSite::$site);
+                $site->addParameter(new ContentParameter($type->getContentId()));
+                $site->addParameter($wikiParameter);
 
+                $btn=new AdminIconSiteButton($layout->col2);
+                $btn->site=$site;
+
+
+
+                $site = clone(ContentRemoveSite::$site);
+                $site->addParameter(new ContentParameter($type->getContentId()));
+                $site->addParameter($wikiParameter);
+
+                $btn=new AdminIconSiteButton($layout->col2);
+                $btn->site=$site;
+
+
+
+            }
 
 
             //$container = new CmsEditorContainer($layout->col2);

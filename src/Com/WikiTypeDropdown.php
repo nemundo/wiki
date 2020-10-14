@@ -9,9 +9,7 @@ use Nemundo\Package\Bootstrap\Dropdown\BootstrapSiteDropdown;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Wiki\Data\WikiType\WikiTypeReader;
 use Nemundo\Wiki\Parameter\WikiParameter;
-use Nemundo\Wiki\Site\ContentTypeAddSite;
-use Nemundo\Wiki\Site\WikiAddSite;
-use Nemundo\Content\Parameter\DataParameter;
+use Nemundo\Wiki\Site\Content\ContentAddSite;
 
 class WikiTypeDropdown extends BootstrapSiteDropdown
 {
@@ -28,7 +26,7 @@ class WikiTypeDropdown extends BootstrapSiteDropdown
         $reader->model->loadContentType();
         foreach ($reader->getData() as $wikiRow) {
 
-            $site=clone(ContentTypeAddSite::$site);
+            $site=clone(ContentAddSite::$site);
             $site->title=$wikiRow->contentType->contentType;
             $site->addParameter(new WikiParameter($this->wikiId));
             //$site->addParameter(new DataParameter($this->dataId));

@@ -1,0 +1,14 @@
+{
+  "name": "nemundo/wiki",
+  "description": "Wiki",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Urs Lang",
+      "email": "urs.lang@gmail.com"
+    }
+  ],
+  "require": {
+    "nemundo/content": "*"
+  }
+}
