@@ -5,11 +5,11 @@ namespace Nemundo\Wiki\Site;
 
 
 use Nemundo\Web\Site\AbstractSite;
-use Nemundo\Wiki\Group\WikiEditorGroup;
 use Nemundo\Wiki\Page\WikiNewPage;
-use Nemundo\Process\Group\Site\AbstractGroupRestrictedSite;
+use Nemundo\Wiki\Usergroup\WikiEditorUsergroup;
 
-class WikiNewSite extends AbstractSite  // AbstractGroupRestrictedSite
+
+class WikiNewSite extends AbstractSite
 {
 
     protected function loadSite()
@@ -17,8 +17,8 @@ class WikiNewSite extends AbstractSite  // AbstractGroupRestrictedSite
 
         $this->title = 'New';
         $this->url = 'new';
-        //$this->groupRestricted = true;
-        //$this->addRestrictedGroup(new WikiEditorGroup());
+        $this->restricted = true;
+        $this->addRestrictedUsergroup(new WikiEditorUsergroup());
 
     }
 

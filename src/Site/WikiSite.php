@@ -28,8 +28,12 @@ class WikiSite extends AbstractSite
 
         new WikiNewSite($this);
         new WikiDeleteSite($this);
+
+        new PrintSite($this);
+
         //new AdminSite($this);
         //new ContentTypeAddSite($this);
+
         new ContentAddSite($this);
         new ContentDeleteSite($this);
         new ContentEditSite($this);

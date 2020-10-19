@@ -36,7 +36,7 @@
             "namespace": "Nemundo\\Wiki\\Data\\WikiType",
             "row_class_name": "",
             "primary_index": "auto_increment",
-            "is_deleted": false,
+            "is_deleted": true,
             "type": [
                 {
                     "type": "external",

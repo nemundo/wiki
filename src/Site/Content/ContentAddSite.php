@@ -29,7 +29,6 @@ class ContentAddSite extends AbstractSite
 
         $page = new TemplateDocument();
 
-
         $wikiType = new WikiPageContentType((new WikiParameter())->getValue());
 
         $type = (new ContentTypeParameter())->getContentType();

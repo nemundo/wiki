@@ -4,17 +4,15 @@
 namespace Nemundo\Wiki\Com;
 
 
+use Nemundo\Content\Data\ApplicationContentType\ApplicationContentTypeReader;
 use Nemundo\Content\Parameter\ContentTypeParameter;
 use Nemundo\Package\Bootstrap\Dropdown\BootstrapSiteDropdown;
-use Nemundo\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Wiki\Data\WikiType\WikiTypeReader;
+use Nemundo\Wiki\Application\WikiApplication;
 use Nemundo\Wiki\Parameter\WikiParameter;
 use Nemundo\Wiki\Site\Content\ContentAddSite;
 
 class WikiTypeDropdown extends BootstrapSiteDropdown
 {
-
-    //public $dataId;
 
     public $wikiId;
 
@@ -22,17 +20,16 @@ class WikiTypeDropdown extends BootstrapSiteDropdown
     public function getContent()
     {
 
-        $reader = new WikiTypeReader();
+        $reader = new ApplicationContentTypeReader();
         $reader->model->loadContentType();
+        $reader->filter->andEqual($reader->model->applicationId, (new WikiApplication())->applicationId);
+        $reader->addOrder($reader->model->contentType->contentType);
         foreach ($reader->getData() as $wikiRow) {
-
-            $site=clone(ContentAddSite::$site);
-            $site->title=$wikiRow->contentType->contentType;
+            $site = clone(ContentAddSite::$site);
+            $site->title = $wikiRow->contentType->contentType;
             $site->addParameter(new WikiParameter($this->wikiId));
-            //$site->addParameter(new DataParameter($this->dataId));
             $site->addParameter((new ContentTypeParameter($wikiRow->contentTypeId)));
             $this->addSite($site);
-
         }
 
         return parent::getContent();

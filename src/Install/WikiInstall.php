@@ -5,14 +5,23 @@ namespace Nemundo\Wiki\Install;
 
 
 use Nemundo\App\Script\Setup\ScriptSetup;
+use Nemundo\Content\App\App\Install\ContentAppInstall;
+use Nemundo\Content\App\Document\Content\File\FileContentType;
+use Nemundo\Content\App\Map\Content\SwissMap\SwissMapContentType;
+use Nemundo\Content\App\Text\Content\Html\HtmlContentType;
+use Nemundo\Content\App\Text\Content\LargeText\LargeTextContentType;
+use Nemundo\Content\App\Text\Content\Text\TextContentType;
+use Nemundo\Content\App\Video\Content\YouTube\YouTubeContentType;
+use Nemundo\Content\App\Webcam\Content\Webcam\WebcamContentType;
+use Nemundo\Content\Install\ContentInstall;
 use Nemundo\Content\Setup\ContentTypeSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Install\AbstractInstall;
-
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\WikiCollection;
 use Nemundo\Wiki\Script\WikiCleanScript;
+use Nemundo\Wiki\Setup\WikiSetup;
 use Nemundo\Wiki\Usergroup\WikiEditorUsergroup;
 
 
@@ -22,72 +31,33 @@ class WikiInstall extends AbstractInstall
     public function install()
     {
 
-        $setup = new ModelCollectionSetup();
-        $setup->addCollection(new WikiCollection());
+        (new ContentInstall())
+            ->install();
 
-        $setup = new ContentTypeSetup();
-        $setup->addContentType(new WikiPageContentType());
-        //$setup->addContentType(new LargeTextContentType());
+        (new ModelCollectionSetup())
+            ->addCollection(new WikiCollection());
 
-        //(new ContentTypeSetup())
-        //    ->addContentType(new TitleChangeContentType());
-
-
-        /*
-        $setup = new CmsSetup(new WikiPageContentType());
-        $setup->addContentType(new YouTubeContentType());
-        $setup
-            ->addContentType(new TextContentType())
-            ->addContentType(new ImageContentType());*/
-
+        (new ContentTypeSetup())
+            ->addContentType(new WikiPageContentType());
 
         (new ScriptSetup())
             ->addScript(new WikiCleanScript());
 
-
         (new UsergroupSetup())
             ->addUsergroup(new WikiEditorUsergroup());
 
+        (new ContentAppInstall())
+            ->install();
 
-        //$setup = new WikiSetup();
-        //$setup->addContentType(new HtmlContentType());
-        //$setup->addContentType(new EventAddContentType());
-
-
-        /*$setup = new WikiSetup();
-        $setup->addContentType(new LargeTextContentType());
-        //$setup->addContentType(new EventContentType());
-        $setup->addContentType(new TextContentType());
-
-
-        $setup->addContentType(new FileContentType());
-        $setup->addContentType(new YouTubeContentType());
-
-
-        $setup->addContentType(new ImageContentType());
-        $setup->addContentType(new VideoContentType());*/
-
-
-        /*
         (new WikiSetup())
-            ->addContentType(new BookmarkContentType())
-           // ->addContentType(new FeedContentType())
-            ->addContentType(new AudioContentType())
             ->addContentType(new TextContentType())
-            ->addContentType(new ImageListContentType())
-            ->addContentType(new FileListContentType())
-            ->addContentType(new ImageListContentType());*/
-
-
-        /*
-        $setup->addContentType(new YoutubeContentType());
-        $setup->addContentType(new WebImageContentType());
-        $setup->addContentType(new NewsContentType());*/
-
-        //(new GroupSetup())
-        //    ->addGroupType(new WikiGroupType());
-
-        //(new WikiEditorGroup())->saveType();
+            ->addContentType(new LargeTextContentType())
+            ->addContentType(new HtmlContentType())
+            ->addContentType(new FileContentType())
+            ->addContentType(new SwissMapContentType())
+            ->addContentType(new YouTubeContentType())
+            ->addContentType(new WebcamContentType())
+            ;
 
 
     }

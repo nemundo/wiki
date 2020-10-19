@@ -4,6 +4,5 @@ use Nemundo\Model\Collection\AbstractModelCollection;
 class WikiCollection extends AbstractModelCollection {
 protected function loadCollection() {
 $this->addModel(new \Nemundo\Wiki\Data\Wiki\WikiModel());
-$this->addModel(new \Nemundo\Wiki\Data\WikiType\WikiTypeModel());
 }
 }

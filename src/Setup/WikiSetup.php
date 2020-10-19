@@ -3,28 +3,15 @@
 
 namespace Nemundo\Wiki\Setup;
 
+use Nemundo\Content\Setup\ApplicationContentTypeSetup;
+use Nemundo\Wiki\Application\WikiApplication;
 
-use Nemundo\Core\Base\AbstractBase;
-use Nemundo\Wiki\Data\WikiType\WikiType;
-use Nemundo\Content\Setup\ContentTypeSetup;
-use Nemundo\Content\Type\AbstractContentType;
-use Nemundo\Content\Type\AbstractType;
-
-class WikiSetup extends ContentTypeSetup
+class WikiSetup extends ApplicationContentTypeSetup
 {
 
-    public function addContentType(AbstractType $contentType) {
-
-        parent::addContentType($contentType);
-
-        $data=new WikiType();
-        $data->updateOnDuplicate=true;
-        $data->contentTypeId=$contentType->typeId;
-        $data->save();
-
-        return $this;
-
-
+    public function __construct()
+    {
+        parent::__construct(new WikiApplication());
     }
 
 }

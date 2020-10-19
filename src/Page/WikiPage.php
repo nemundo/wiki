@@ -5,17 +5,18 @@ namespace Nemundo\Wiki\Page;
 
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
-use Nemundo\Admin\Com\Button\AdminSiteButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
 use Nemundo\Content\Parameter\ContentParameter;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
+use Nemundo\Wiki\Com\Container\WikiEditorContainer;
 use Nemundo\Wiki\Com\WikiTypeDropdown;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Wiki\Parameter\WikiParameter;
 use Nemundo\Wiki\Site\Content\ContentEditSite;
 use Nemundo\Wiki\Site\Content\ContentRemoveSite;
+use Nemundo\Wiki\Site\PrintSite;
 use Nemundo\Wiki\Site\WikiDeleteSite;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Wiki\Template\WikiTemplate;
@@ -57,11 +58,19 @@ class WikiPage extends WikiTemplate
             $title = new AdminTitle($layout->col2);
             $title->content = $wikiType->getSubject();
 
-            $dropdown = new WikiTypeDropdown($layout->col2);
-            //$wikiType->getView($layout->col2);
+            //$container=new ApplicationAddContentTypeContainer($layout->col2);
+            //$container->application=new WikiApplication();
 
-            $btn=new AdminIconSiteButton($layout->col2);
-            $btn->site= clone(WikiDeleteSite::$site);
+            $container=new WikiEditorContainer($layout->col2);
+
+            $dropdown = new WikiTypeDropdown($container);
+
+            $btn = new AdminIconSiteButton($container);
+            $btn->site = clone(PrintSite::$site);
+            $btn->site->addParameter(new WikiParameter($wikiId));
+
+            $btn = new AdminIconSiteButton($container);
+            $btn->site = clone(WikiDeleteSite::$site);
             $btn->site->addParameter(new WikiParameter($wikiId));
 
             foreach ($wikiType->getChild() as $child) {
@@ -69,22 +78,22 @@ class WikiPage extends WikiTemplate
                 $type = $child->getContentType();
                 $type->getView($layout->col2);
 
+
+                $container=new WikiEditorContainer($layout->col2);
+
                 $site = clone(ContentEditSite::$site);
                 $site->addParameter(new ContentParameter($type->getContentId()));
                 $site->addParameter($wikiParameter);
 
-                $btn=new AdminIconSiteButton($layout->col2);
-                $btn->site=$site;
-
-
+                $btn = new AdminIconSiteButton($container);
+                $btn->site = $site;
 
                 $site = clone(ContentRemoveSite::$site);
                 $site->addParameter(new ContentParameter($type->getContentId()));
                 $site->addParameter($wikiParameter);
 
-                $btn=new AdminIconSiteButton($layout->col2);
-                $btn->site=$site;
-
+                $btn = new AdminIconSiteButton($container);
+                $btn->site = $site;
 
 
             }
