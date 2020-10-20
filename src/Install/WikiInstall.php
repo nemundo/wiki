@@ -6,6 +6,7 @@ namespace Nemundo\Wiki\Install;
 
 use Nemundo\App\Script\Setup\ScriptSetup;
 use Nemundo\Content\App\App\Install\ContentAppInstall;
+use Nemundo\Content\App\Contact\Content\Contact\ContactContentType;
 use Nemundo\Content\App\Document\Content\File\FileContentType;
 use Nemundo\Content\App\Map\Content\SwissMap\SwissMapContentType;
 use Nemundo\Content\App\Text\Content\Html\HtmlContentType;
@@ -57,6 +58,7 @@ class WikiInstall extends AbstractInstall
             ->addContentType(new SwissMapContentType())
             ->addContentType(new YouTubeContentType())
             ->addContentType(new WebcamContentType())
+            ->addContentType(new ContactContentType())
             ;
 
 
