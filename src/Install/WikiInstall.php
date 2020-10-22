@@ -9,7 +9,10 @@ use Nemundo\Content\App\App\Install\ContentAppInstall;
 use Nemundo\Content\App\Bookmark\Content\UrlContentType;
 use Nemundo\Content\App\Contact\Content\Contact\ContactContentType;
 use Nemundo\Content\App\Document\Content\File\FileContentType;
+use Nemundo\Content\App\File\Collection\FileContentTypeCollection;
+use Nemundo\Content\App\Image\Content\Image\ImageContentType;
 use Nemundo\Content\App\Map\Content\SwissMap\SwissMapContentType;
+use Nemundo\Content\App\Text\Application\TextContentTypeCollection;
 use Nemundo\Content\App\Text\Content\Html\HtmlContentType;
 use Nemundo\Content\App\Text\Content\LargeText\LargeTextContentType;
 use Nemundo\Content\App\Text\Content\Text\TextContentType;
@@ -19,6 +22,7 @@ use Nemundo\Content\Install\ContentInstall;
 use Nemundo\Content\Setup\ContentTypeSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Project\Install\AbstractInstall;
+use Nemundo\Srf\Content\EpisodeSearch\EpisodeSearchContentType;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\WikiCollection;
@@ -55,13 +59,20 @@ class WikiInstall extends AbstractInstall
             ->addContentType(new TextContentType())
             ->addContentType(new LargeTextContentType())
             ->addContentType(new HtmlContentType())
-            ->addContentType(new FileContentType())
+            //->addContentType(new FileContentType())
+            //->addContentType(new ImageContentType())
             ->addContentType(new UrlContentType())
             ->addContentType(new SwissMapContentType())
             ->addContentType(new YouTubeContentType())
             ->addContentType(new WebcamContentType())
             ->addContentType(new ContactContentType())
+            ->addContentTypeCollection(new FileContentTypeCollection())
+            ->addContentTypeCollection(new TextContentTypeCollection())
+            ->addContentType(new EpisodeSearchContentType())
             ;
+
+
+
 
 
     }
