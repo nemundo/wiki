@@ -6,7 +6,7 @@ use Nemundo\Core\Http\Url\UrlReferer;
 use Nemundo\Package\FontAwesome\Site\AbstractDeleteIconSite;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Wiki\Content\WikiPageContentType;
-use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Parameter\WikiPageParameter;
 
 class WikiDeleteSite extends AbstractDeleteIconSite
 {
@@ -26,7 +26,7 @@ class WikiDeleteSite extends AbstractDeleteIconSite
     public function loadContent()
     {
 
-        $wikiType = new WikiPageContentType((new WikiParameter())->getValue());
+        $wikiType = new WikiPageContentType((new WikiPageParameter())->getValue());
         $wikiType->deleteType();
 
         WikiSite::$site->redirect();

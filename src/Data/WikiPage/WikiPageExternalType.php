@@ -1,6 +1,6 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
-class WikiExternalType extends \Nemundo\Model\Type\External\ExternalType {
+namespace Nemundo\Wiki\Data\WikiPage;
+class WikiPageExternalType extends \Nemundo\Model\Type\External\ExternalType {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -13,7 +13,7 @@ public $title;
 
 protected function loadExternalType() {
 parent::loadExternalType();
-$this->externalModelClassName = WikiModel::class;
+$this->externalModelClassName = WikiPageModel::class;
 $this->externalTableName = "wiki_wiki";
 $this->aliasTableName = $this->parentFieldName . "_" . $this->externalTableName;
 $this->id = new \Nemundo\Model\Type\Id\IdType();

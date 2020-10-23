@@ -1,9 +1,9 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
+namespace Nemundo\Wiki\Data\WikiPage;
 use Nemundo\Model\Data\AbstractModelUpdate;
-class WikiUpdate extends AbstractModelUpdate {
+class WikiPageUpdate extends AbstractModelUpdate {
 /**
-* @var WikiModel
+* @var WikiPageModel
 */
 public $model;
 
@@ -14,7 +14,7 @@ public $title;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiPageModel();
 }
 public function update() {
 $this->typeValueList->setModelValue($this->model->title, $this->title);

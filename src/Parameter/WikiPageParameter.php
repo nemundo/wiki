@@ -4,10 +4,10 @@ namespace Nemundo\Wiki\Parameter;
 
 use Nemundo\Web\Parameter\AbstractUrlParameter;
 
-class WikiParameter extends AbstractUrlParameter
+class WikiPageParameter extends AbstractUrlParameter
 {
     protected function loadParameter()
     {
-        $this->parameterName = 'wiki';
+        $this->parameterName = 'page';
     }
 }

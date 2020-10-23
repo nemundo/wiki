@@ -1,6 +1,6 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
-class WikiModel extends \Nemundo\Model\Definition\Model\AbstractModel {
+namespace Nemundo\Wiki\Data\WikiPage;
+class WikiPageModel extends \Nemundo\Model\Definition\Model\AbstractModel {
 /**
 * @var \Nemundo\Model\Type\Id\IdType
 */
@@ -14,9 +14,9 @@ public $title;
 protected function loadModel() {
 $this->tableName = "wiki_wiki";
 $this->aliasTableName = "wiki_wiki";
-$this->label = "Wiki";
+$this->label = "Wiki Page";
 
-$this->primaryIndex = new \Nemundo\Db\Index\UniqueIdPrimaryIndex();
+$this->primaryIndex = new \Nemundo\Db\Index\AutoIncrementIdPrimaryIndex();
 
 $this->id = new \Nemundo\Model\Type\Id\IdType($this);
 $this->id->tableName = "wiki_wiki";

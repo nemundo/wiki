@@ -6,7 +6,8 @@ use Nemundo\Com\Template\TemplateDocument;
 use Nemundo\Content\Parameter\ContentTypeParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Wiki\Content\WikiPageContentType;
-use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Event\WikiEvent;
+use Nemundo\Wiki\Parameter\WikiPageParameter;
 
 class ContentAddSite extends AbstractSite
 {
@@ -29,10 +30,16 @@ class ContentAddSite extends AbstractSite
 
         $page = new TemplateDocument();
 
-        $wikiType = new WikiPageContentType((new WikiParameter())->getValue());
+$wikiId = (new WikiPageParameter())->getValue();
+        $wikiType = new WikiPageContentType($wikiId);
 
         $type = (new ContentTypeParameter())->getContentType();
-        $type->parentId = $wikiType->getContentId();
+
+        $event= new WikiEvent();
+        $event->pageId=$wikiId;
+        $type->addEvent($event);
+        //$type->parentId = $wikiType->getContentId();
+
         $form = $type->getForm($page);
         $form->redirectSite = $wikiType->getViewSite();
 

@@ -7,7 +7,7 @@ namespace Nemundo\Wiki\Content;
 use Nemundo\Html\Container\AbstractHtmlContainer;
 use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Content\View\AbstractContentList;
 
@@ -18,7 +18,7 @@ class WikiPageContentList extends AbstractContentList
     {
 
         $this->redirectSite = WikiSite::$site;
-        $this->redirectParameter =new WikiParameter();
+        $this->redirectParameter =new WikiPageParameter();
 
         $list = new BootstrapHyperlinkList($this);
 

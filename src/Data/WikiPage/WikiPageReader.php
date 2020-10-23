@@ -1,17 +1,17 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
-class WikiReader extends \Nemundo\Model\Reader\ModelDataReader {
+namespace Nemundo\Wiki\Data\WikiPage;
+class WikiPageReader extends \Nemundo\Model\Reader\ModelDataReader {
 /**
-* @var WikiModel
+* @var WikiPageModel
 */
 public $model;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiPageModel();
 }
 /**
-* @return WikiRow[]
+* @return WikiPageRow[]
 */
 public function getData() {
 $list = [];
@@ -22,7 +22,7 @@ $list[] = $row;
 return $list;
 }
 /**
-* @return WikiRow
+* @return WikiPageRow
 */
 public function getRow() {
 $dataRow = parent::getRow();
@@ -30,13 +30,13 @@ $row = $this->getModelRow($dataRow);
 return $row;
 }
 /**
-* @return WikiRow
+* @return WikiPageRow
 */
 public function getRowById($id) {
 return parent::getRowById($id);
 }
 private function getModelRow($dataRow) {
-$row = new WikiRow($dataRow, $this->model);
+$row = new WikiPageRow($dataRow, $this->model);
 $row->model = $this->model;
 return $row;
 }

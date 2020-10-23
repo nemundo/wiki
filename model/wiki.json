@@ -6,13 +6,53 @@
     "model": [
         {
             "template": "default",
-            "model_id": "46154325-fc13-4a65-bc72-abacaf64cea7",
-            "label": "Wiki",
-            "class_name": "Wiki",
-            "table_name": "wiki_wiki",
-            "namespace": "Nemundo\\Wiki\\Data\\Wiki",
+            "model_id": "e53bd74e-bb86-4255-8386-1cefb5bdb5b7",
+            "label": "Wiki Content",
+            "class_name": "WikiContent",
+            "table_name": "wiki_wiki_content",
+            "namespace": "Nemundo\\Wiki\\Data\\WikiContent",
             "row_class_name": "",
-            "primary_index": "unique_id",
+            "primary_index": "auto_increment",
+            "is_deleted": false,
+            "type": [
+                {
+                    "type": "external",
+                    "label": "Page",
+                    "field_name": "page",
+                    "variable_name": "page",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "46154325-fc13-4a65-bc72-abacaf64cea7"
+                },
+                {
+                    "type": "external",
+                    "label": "Content",
+                    "field_name": "content",
+                    "variable_name": "content",
+                    "allow_null": true,
+                    "is_deleted": false,
+                    "external_model_id": "2b8a3194-c10f-4a5c-a439-84581d448f35"
+                },
+                {
+                    "type": "number",
+                    "label": "Item Order",
+                    "field_name": "item_order",
+                    "variable_name": "itemOrder",
+                    "allow_null": true,
+                    "is_deleted": false
+                }
+            ],
+            "index": []
+        },
+        {
+            "template": "default",
+            "model_id": "46154325-fc13-4a65-bc72-abacaf64cea7",
+            "label": "Wiki Page",
+            "class_name": "WikiPage",
+            "table_name": "wiki_wiki",
+            "namespace": "Nemundo\\Wiki\\Data\\WikiPage",
+            "row_class_name": "",
+            "primary_index": "auto_increment",
             "is_deleted": false,
             "type": [
                 {

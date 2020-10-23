@@ -7,7 +7,7 @@ namespace Nemundo\Wiki\Content;
 use Nemundo\Core\Debug\Debug;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\FormElement\BootstrapTextBox;
-use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Content\Form\AbstractContentForm;
 
 class WikiPageContentForm extends AbstractContentForm
@@ -53,7 +53,7 @@ class WikiPageContentForm extends AbstractContentForm
         $this->contentType->saveType();
 
         if ($this->appendParameter) {
-            $this->redirectSite->addParameter(new WikiParameter($this->contentType->getDataId()));
+            $this->redirectSite->addParameter(new WikiPageParameter($this->contentType->getDataId()));
         }
 
     }

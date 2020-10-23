@@ -5,7 +5,9 @@ namespace Nemundo\Wiki\Install;
 
 
 use Nemundo\App\Script\Setup\ScriptSetup;
-use Nemundo\Content\App\App\Install\ContentAppInstall;
+
+use Nemundo\Content\App\Base\Collection\ContentAppContentTypeCollection;
+use Nemundo\Content\App\Base\Install\ContentAppInstall;
 use Nemundo\Content\App\Bookmark\Content\UrlContentType;
 use Nemundo\Content\App\Contact\Content\Contact\ContactContentType;
 use Nemundo\Content\App\Document\Content\File\FileContentType;
@@ -56,6 +58,10 @@ class WikiInstall extends AbstractInstall
             ->install();
 
         (new WikiSetup())
+            ->addContentTypeCollection(new ContentAppContentTypeCollection());
+
+
+        /*
             ->addContentType(new TextContentType())
             ->addContentType(new LargeTextContentType())
             ->addContentType(new HtmlContentType())
@@ -69,7 +75,7 @@ class WikiInstall extends AbstractInstall
             ->addContentTypeCollection(new FileContentTypeCollection())
             ->addContentTypeCollection(new TextContentTypeCollection())
             ->addContentType(new EpisodeSearchContentType())
-            ;
+            ;*/
 
 
 

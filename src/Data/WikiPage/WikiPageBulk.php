@@ -1,8 +1,8 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
-class Wiki extends \Nemundo\Model\Data\AbstractModelData {
+namespace Nemundo\Wiki\Data\WikiPage;
+class WikiPageBulk extends \Nemundo\Model\Data\AbstractModelDataBulk {
 /**
-* @var WikiModel
+* @var WikiPageModel
 */
 protected $model;
 
@@ -13,7 +13,7 @@ public $title;
 
 public function __construct() {
 parent::__construct();
-$this->model = new WikiModel();
+$this->model = new WikiPageModel();
 }
 public function save() {
 $this->typeValueList->setModelValue($this->model->title, $this->title);

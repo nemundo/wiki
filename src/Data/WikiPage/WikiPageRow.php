@@ -1,13 +1,13 @@
 <?php
-namespace Nemundo\Wiki\Data\Wiki;
-class WikiRow extends \Nemundo\Model\Row\AbstractModelDataRow {
+namespace Nemundo\Wiki\Data\WikiPage;
+class WikiPageRow extends \Nemundo\Model\Row\AbstractModelDataRow {
 /**
 * @var \Nemundo\Model\Row\AbstractModelDataRow
 */
 private $row;
 
 /**
-* @var WikiModel
+* @var WikiPageModel
 */
 public $model;
 

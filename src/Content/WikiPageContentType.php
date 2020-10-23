@@ -4,16 +4,16 @@
 namespace Nemundo\Wiki\Content;
 
 
+use Nemundo\Content\Type\AbstractContentType;
 use Nemundo\Wiki\Content\Page\WikiPageContentView;
-use Nemundo\Wiki\Data\Wiki\Wiki;
-use Nemundo\Wiki\Data\Wiki\WikiDelete;
-use Nemundo\Wiki\Data\Wiki\WikiReader;
-use Nemundo\Wiki\Data\Wiki\WikiUpdate;
-use Nemundo\Wiki\Parameter\WikiParameter;
+use Nemundo\Wiki\Data\WikiPage\WikiPage;
+use Nemundo\Wiki\Data\WikiPage\WikiPageDelete;
+use Nemundo\Wiki\Data\WikiPage\WikiPageReader;
+use Nemundo\Wiki\Data\WikiPage\WikiPageUpdate;
+use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
-use Nemundo\Content\Type\AbstractMenuContentType;
 
-class WikiPageContentType extends AbstractMenuContentType
+class WikiPageContentType extends AbstractContentType  // AbstractMenuContentType
 {
 
     public $title;
@@ -27,8 +27,8 @@ class WikiPageContentType extends AbstractMenuContentType
         $this->formClass = WikiPageContentForm::class;
         $this->listClass = WikiPageContentList::class;
         $this->viewSite = WikiSite::$site;
-        $this->viewClass=WikiPageContentView::class;
-        $this->parameterClass = WikiParameter::class;
+        $this->viewClass = WikiPageContentView::class;
+        $this->parameterClass = WikiPageParameter::class;
 
     }
 
@@ -36,7 +36,7 @@ class WikiPageContentType extends AbstractMenuContentType
     protected function onCreate()
     {
 
-        $data = new Wiki();
+        $data = new WikiPage();
         $data->title = $this->title;
         $this->dataId = $data->save();
 
@@ -46,7 +46,7 @@ class WikiPageContentType extends AbstractMenuContentType
     protected function onUpdate()
     {
 
-        $update = new WikiUpdate();
+        $update = new WikiPageUpdate();
         $update->title = $this->title;
         $update->updateById($this->dataId);
 
@@ -64,14 +64,14 @@ class WikiPageContentType extends AbstractMenuContentType
 
     protected function onDelete()
     {
-        (new WikiDelete())->deleteById($this->dataId);
+        (new WikiPageDelete())->deleteById($this->dataId);
     }
 
 
     public function getDataRow()
     {
 
-        return (new WikiReader())->getRowById($this->dataId);
+        return (new WikiPageReader())->getRowById($this->dataId);
 
     }
 

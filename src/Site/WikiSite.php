@@ -9,6 +9,7 @@ use Nemundo\Wiki\Site\Content\ContentAddSite;
 use Nemundo\Wiki\Site\Content\ContentDeleteSite;
 use Nemundo\Wiki\Site\Content\ContentEditSite;
 use Nemundo\Wiki\Site\Content\ContentRemoveSite;
+use Nemundo\Wiki\Site\Content\ContentSortableSite;
 
 
 class WikiSite extends AbstractSite
@@ -31,13 +32,11 @@ class WikiSite extends AbstractSite
 
         new PrintSite($this);
 
-        //new AdminSite($this);
-        //new ContentTypeAddSite($this);
-
         new ContentAddSite($this);
         new ContentDeleteSite($this);
         new ContentEditSite($this);
         new ContentRemoveSite($this);
+        new ContentSortableSite($this);
 
     }
 
