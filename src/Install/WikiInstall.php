@@ -40,8 +40,9 @@ class WikiInstall extends AbstractInstall
         (new UsergroupSetup())
             ->addUsergroup(new WikiEditorUsergroup());
 
+        /*
         (new ContentAppInstall())
-            ->install();
+            ->install();*/
 
         (new WikiSetup())
             ->addContentTypeCollection(new ContentAppContentTypeCollection());
