@@ -11,6 +11,16 @@ public $id;
 */
 public $title;
 
+/**
+* @var \Nemundo\Model\Type\External\Id\ExternalIdType
+*/
+public $groupId;
+
+/**
+* @var \Nemundo\Content\Index\Group\Data\Group\GroupExternalType
+*/
+public $group;
+
 protected function loadModel() {
 $this->tableName = "wiki_wiki";
 $this->aliasTableName = "wiki_wiki";
@@ -37,5 +47,22 @@ $this->title->label = "Title";
 $this->title->allowNullValue = false;
 $this->title->length = 255;
 
+$this->groupId = new \Nemundo\Model\Type\External\Id\ExternalIdType($this);
+$this->groupId->tableName = "wiki_wiki";
+$this->groupId->fieldName = "group";
+$this->groupId->aliasFieldName = "wiki_wiki_group";
+$this->groupId->label = "Group";
+$this->groupId->allowNullValue = true;
+
+}
+public function loadGroup() {
+if ($this->group == null) {
+$this->group = new \Nemundo\Content\Index\Group\Data\Group\GroupExternalType($this, "wiki_wiki_group");
+$this->group->tableName = "wiki_wiki";
+$this->group->fieldName = "group";
+$this->group->aliasFieldName = "wiki_wiki_group";
+$this->group->label = "Group";
+}
+return $this;
 }
 }

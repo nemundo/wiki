@@ -18,6 +18,8 @@ class WikiPageContentType extends AbstractContentType  // AbstractMenuContentTyp
 
     public $title;
 
+    public $groupId;
+
 
     protected function loadContentType()
     {
@@ -38,6 +40,7 @@ class WikiPageContentType extends AbstractContentType  // AbstractMenuContentTyp
 
         $data = new WikiPage();
         $data->title = $this->title;
+        $data->groupId=$this->groupId;
         $this->dataId = $data->save();
 
     }
