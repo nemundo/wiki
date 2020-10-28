@@ -12,6 +12,7 @@ use Nemundo\Wiki\Data\WikiPage\WikiPageReader;
 use Nemundo\Wiki\Data\WikiPage\WikiPageUpdate;
 use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
+use Nemundo\Wiki\Site\WikiViewSite;
 
 class WikiPageContentType extends AbstractContentType  // AbstractMenuContentType
 {
@@ -27,8 +28,8 @@ class WikiPageContentType extends AbstractContentType  // AbstractMenuContentTyp
         $this->typeId = 'b94ec710-d1bd-4430-8866-4a7f9a493c52';
         $this->typeLabel = 'Wiki Page';
         $this->formClass = WikiPageContentForm::class;
-        $this->listClass = WikiPageContentList::class;
-        $this->viewSite = WikiSite::$site;
+        //$this->listClass = WikiPageContentList::class;
+        $this->viewSite = WikiViewSite::$site;
         $this->viewClass = WikiPageContentView::class;
         $this->parameterClass = WikiPageParameter::class;
 

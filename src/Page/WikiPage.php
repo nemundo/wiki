@@ -88,8 +88,16 @@ class WikiPage extends WikiTemplate
 
                 if ($showItem) {
 
+
+
                     $title = new AdminTitle($layout->col2);
                     $title->content = $wikiType->getSubject();
+
+
+                    $btn=new AdminIconSiteButton($layout->col2);
+                    $btn->site=$wikiType->getViewSite();
+
+
 
                     $container = new WikiEditorContainer($layout->col2);
 
