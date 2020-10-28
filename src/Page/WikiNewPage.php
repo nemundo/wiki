@@ -5,7 +5,7 @@ namespace Nemundo\Wiki\Page;
 
 
 use Nemundo\Com\Template\AbstractTemplateDocument;
-use Nemundo\Content\Index\Group\User\UserGroupType;
+use Nemundo\Content\Index\Group\User\UserContentType;
 use Nemundo\Package\Bootstrap\Layout\BootstrapTwoColumnLayout;
 use Nemundo\User\Type\UserSessionType;
 use Nemundo\Wiki\Content\WikiPageContentType;
@@ -22,7 +22,7 @@ class WikiNewPage extends WikiTemplate
 
 
         $type = new WikiPageContentType();
-        $type->groupId = (new UserGroupType((new UserSessionType())->userId))->getGroupId();
+        $type->groupId = (new UserContentType((new UserSessionType())->userId))->getGroupId();
         $form = $type->getForm($layout->col1);
 
         $form->appendParameter = true;

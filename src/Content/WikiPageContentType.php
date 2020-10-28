@@ -14,7 +14,7 @@ use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Wiki\Site\WikiViewSite;
 
-class WikiPageContentType extends AbstractContentType  // AbstractMenuContentType
+class WikiPageContentType extends AbstractContentType
 {
 
     public $title;

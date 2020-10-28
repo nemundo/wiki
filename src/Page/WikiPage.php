@@ -26,6 +26,7 @@ use Nemundo\Wiki\Site\Content\ContentRemoveSite;
 use Nemundo\Wiki\Site\Content\ContentSortableSite;
 use Nemundo\Wiki\Site\PrintSite;
 use Nemundo\Wiki\Site\WikiDeleteSite;
+use Nemundo\Wiki\Site\WikiEditSite;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Wiki\Template\WikiTemplate;
 
@@ -102,6 +103,10 @@ class WikiPage extends WikiTemplate
                     $container = new WikiEditorContainer($layout->col2);
 
                     new WikiTypeDropdown($container);
+
+                    $btn = new AdminIconSiteButton($container);
+                    $btn->site = clone(WikiEditSite::$site);
+                    $btn->site->addParameter(new WikiPageParameter($wikiId));
 
                     $btn = new AdminIconSiteButton($container);
                     $btn->site = clone(PrintSite::$site);
