@@ -20,7 +20,6 @@ class WikiNewPage extends WikiTemplate
 
         $layout=new BootstrapTwoColumnLayout($this);
 
-
         $type = new WikiPageContentType();
         $type->groupId = (new UserContentType((new UserSessionType())->userId))->getGroupId();
         $form = $type->getForm($layout->col1);

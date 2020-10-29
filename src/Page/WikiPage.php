@@ -6,9 +6,11 @@ namespace Nemundo\Wiki\Page;
 
 use Nemundo\Admin\Com\Button\AdminIconSiteButton;
 use Nemundo\Admin\Com\Title\AdminTitle;
+use Nemundo\Com\Html\Listing\UnorderedList;
 use Nemundo\Content\Index\Group\Check\GroupCheck;
 use Nemundo\Content\Index\Group\User\GroupMembership;
 use Nemundo\Content\Parameter\ContentParameter;
+use Nemundo\Db\Sql\Field\CountField;
 use Nemundo\Html\Block\Div;
 use Nemundo\Html\Paragraph\Paragraph;
 use Nemundo\Package\Bootstrap\Layout\BootstrapThreeColumnLayout;
@@ -24,6 +26,7 @@ use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\Content\ContentEditSite;
 use Nemundo\Wiki\Site\Content\ContentRemoveSite;
 use Nemundo\Wiki\Site\Content\ContentSortableSite;
+use Nemundo\Wiki\Site\ContentViewSite;
 use Nemundo\Wiki\Site\PrintSite;
 use Nemundo\Wiki\Site\WikiDeleteSite;
 use Nemundo\Wiki\Site\WikiEditSite;
@@ -133,6 +136,12 @@ class WikiPage extends WikiTemplate
                         $type = $contentRow->content->getContentType();
                         $type->getView($div);
 
+
+                        $btn = new AdminIconSiteButton($div);
+                        $btn->site =clone(ContentViewSite::$site);
+                        $btn->site->addParameter(new ContentParameter($type->getContentId()));
+
+
                         $site = clone(ContentEditSite::$site);
                         $site->addParameter(new ContentParameter($type->getContentId()));
                         $site->addParameter($wikiParameter);
@@ -146,6 +155,52 @@ class WikiPage extends WikiTemplate
 
                         $btn = new AdminIconSiteButton($div);
                         $btn->site = $site;
+
+                    }
+
+
+
+
+                    $ul=new UnorderedList($layout->col3);
+
+
+                    $contentReader = new WikiContentReader();
+                    $contentReader->model->loadContent();
+                    $contentReader->model->content->loadContentType();
+                    $contentReader->filter->andEqual($contentReader->model->pageId, $wikiId);
+                    $contentReader->addGroup($contentReader->model->content->contentTypeId);
+                    //addOrder($contentReader->model->itemOrder);
+
+                    $count=new CountField($contentReader);
+
+                    foreach ($contentReader->getData() as $contentRow) {
+
+
+                        $number= $contentRow->getModelValue($count);
+                        $ul->addText($contentRow->content->contentType->contentType.' ('.$number.')');
+
+
+
+                        /*
+                        $div = new Div($sortableDiv);
+                        $div->id = 'item_' . $contentRow->id;
+
+                        $type = $contentRow->content->getContentType();
+                        $type->getView($div);
+
+                        $site = clone(ContentEditSite::$site);
+                        $site->addParameter(new ContentParameter($type->getContentId()));
+                        $site->addParameter($wikiParameter);
+
+                        $btn = new AdminIconSiteButton($div);
+                        $btn->site = $site;
+
+                        $site = clone(ContentRemoveSite::$site);
+                        $site->addParameter(new ContentParameter($type->getContentId()));
+                        $site->addParameter($wikiParameter);
+
+                        $btn = new AdminIconSiteButton($div);
+                        $btn->site = $site;*/
 
                     }
 

@@ -41,6 +41,8 @@ class WikiSite extends AbstractSite
         new ContentRemoveSite($this);
         new ContentSortableSite($this);
 
+        new ContentViewSite($this);
+
     }
 
 

@@ -3,11 +3,13 @@
 namespace Nemundo\Wiki\Site\Content;
 
 use Nemundo\Com\Template\TemplateDocument;
+use Nemundo\Content\Index\Group\Type\GroupTrait;
 use Nemundo\Content\Parameter\ContentTypeParameter;
 use Nemundo\Web\Site\AbstractSite;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Event\WikiEvent;
 use Nemundo\Wiki\Parameter\WikiPageParameter;
+use Nemundo\Wiki\Site\WikiSite;
 
 class ContentAddSite extends AbstractSite
 {
@@ -30,18 +32,27 @@ class ContentAddSite extends AbstractSite
 
         $page = new TemplateDocument();
 
-$wikiId = (new WikiPageParameter())->getValue();
+        $wikiParameter =new WikiPageParameter();
+        $wikiId = $wikiParameter->getValue();
         $wikiType = new WikiPageContentType($wikiId);
 
         $type = (new ContentTypeParameter())->getContentType();
 
-        $event= new WikiEvent();
-        $event->pageId=$wikiId;
+        if ($type->isObjectOfTrait(GroupTrait::class)) {
+            $type->groupId = $wikiType->getDataRow()->groupId;
+        }
+
+        $event = new WikiEvent();
+        $event->pageId = $wikiId;
         $type->addEvent($event);
         //$type->parentId = $wikiType->getContentId();
 
         $form = $type->getForm($page);
-        $form->redirectSite = $wikiType->getViewSite();
+        //$form->appendParameter = true;
+        $form->redirectSite = clone(WikiSite::$site);
+        $form->redirectSite->addParameter($wikiParameter);
+
+//        $form->redirectSite = $wikiType->getViewSite();
 
         $page->render();
 

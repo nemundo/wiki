@@ -18,6 +18,8 @@ class WikiViewPage extends WikiTemplate
         $wikiType = new WikiPageContentType($wikiId);
         $wikiType->getView($this);
 
+        $this->pageTitle = 'hello';
+
         return parent::getContent();
 
     }
