@@ -5,7 +5,7 @@ namespace Nemundo\Wiki\Content\TitleChange;
 
 
 use Nemundo\Wiki\Data\Wiki\WikiUpdate;
-use Nemundo\Content\Type\AbstractTreeContentType;
+use Nemundo\Content\Index\Tree\Type\AbstractTreeContentType;
 use Nemundo\Process\Template\Content\Text\AbstractTextContentType;
 
 class TitleChangeContentType extends AbstractTextContentType  // AbstractTreeContentType
