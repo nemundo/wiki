@@ -27,7 +27,7 @@ class WikiPageContentForm extends AbstractContentForm
     {
 
         $this->pageTitle = new BootstrapTextBox($this);
-        $this->pageTitle->label = 'Wiki Title';
+        $this->pageTitle->label = 'Wiki Page';
         $this->pageTitle->validation = true;
         $this->pageTitle->autofocus=true;
 

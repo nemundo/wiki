@@ -43,8 +43,8 @@ class WikiInstall extends AbstractInstall
         (new ContentAppInstall())
             ->install();*/
 
-        (new WikiSetup())
-            ->addContentTypeCollection(new ContentAppContentTypeCollection());
+        /*(new WikiSetup())
+            ->addContentTypeCollection(new ContentAppContentTypeCollection());*/
 
     }
 
