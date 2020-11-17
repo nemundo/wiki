@@ -4,6 +4,7 @@
 namespace Nemundo\Wiki\Content;
 
 
+use Nemundo\Content\Index\Tree\Type\AbstractTreeContentType;
 use Nemundo\Content\Type\AbstractContentType;
 use Nemundo\Wiki\Content\Page\WikiPageContentView;
 use Nemundo\Wiki\Data\WikiPage\WikiPage;
@@ -14,7 +15,7 @@ use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
 use Nemundo\Wiki\Site\WikiViewSite;
 
-class WikiPageContentType extends AbstractContentType
+class WikiPageContentType extends AbstractTreeContentType
 {
 
     public $title;
