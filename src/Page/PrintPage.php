@@ -16,7 +16,7 @@ class PrintPage extends BootstrapDocument  // AbstractTemplateDocument
 
         $wikiId = $wikiParameter->getValue();
         $wikiType = new WikiPageContentType($wikiId);
-        $wikiType->getView($this);
+        $wikiType->getDefaultView($this);
 
 
         /*

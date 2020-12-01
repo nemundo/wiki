@@ -36,7 +36,7 @@ class ContentEditSite extends AbstractEditIconSite
         //$contentParameter->addAllowedContentTypeCollection(new WikiContentTypeCollection());
 
         $contentType = $contentParameter->getContentType();  // $contentRow->getContentType();
-        $form = $contentType->getForm($page);
+        $form = $contentType->getDefaultForm($page);
         //$form->dataId=$contentRow->id;
 
         $form->redirectSite = WikiSite::$site;

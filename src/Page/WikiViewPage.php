@@ -16,7 +16,7 @@ class WikiViewPage extends WikiTemplate
 
         $wikiId = $wikiParameter->getValue();
         $wikiType = new WikiPageContentType($wikiId);
-        $wikiType->getView($this);
+        $wikiType->getDefaultView($this);
 
         $this->pageTitle = 'hello';
 

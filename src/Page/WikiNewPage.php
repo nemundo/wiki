@@ -22,7 +22,7 @@ class WikiNewPage extends WikiTemplate
 
         $type = new WikiPageContentType();
         $type->groupId = (new UserContentType((new UserSessionType())->userId))->getGroupId();
-        $form = $type->getForm($layout->col1);
+        $form = $type->getDefaultForm($layout->col1);
 
         $form->appendParameter = true;
         $form->redirectSite = WikiSite::$site;

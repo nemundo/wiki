@@ -134,7 +134,7 @@ class WikiPage extends WikiTemplate
                         $div->id = 'item_' . $contentRow->id;
 
                         $type = $contentRow->content->getContentType();
-                        $type->getView($div);
+                        $type->getDefaultView($div);
 
 
                         $btn = new AdminIconSiteButton($div);

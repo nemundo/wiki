@@ -16,7 +16,7 @@ class WikiEditPage extends AbstractTemplateDocument
         $wikiId = (new WikiPageParameter())->getValue();
 
         $type = new WikiPageContentType($wikiId);
-        $form = $type->getForm($this);
+        $form = $type->getDefaultForm($this);
         $form->redirectSite = clone(WikiSite::$site);
         $form->redirectSite->addParameter($wikiParameter);
 

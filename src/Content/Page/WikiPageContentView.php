@@ -25,7 +25,7 @@ class WikiPageContentView extends AbstractContentView
         $contentReader->filter->andEqual($contentReader->model->pageId, $this->contentType->getDataId());
         foreach ($contentReader->getData() as $contentRow) {
             $type = $contentRow->content->getContentType();
-            $type->getView($this);
+            $type->getDefaultView($this);
         }
 
         return parent::getContent();
