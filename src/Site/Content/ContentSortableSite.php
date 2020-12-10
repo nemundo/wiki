@@ -4,7 +4,7 @@
 namespace Nemundo\Wiki\Site\Content;
 
 
-use Nemundo\Content\Data\Tree\TreeUpdate;
+use Nemundo\Content\Index\Tree\Data\Tree\TreeUpdate;
 use Nemundo\Db\DbConfig;
 use Nemundo\Package\JqueryUi\Sortable\AbstractSortableSite;
 use Nemundo\Wiki\Data\WikiContent\WikiContentUpdate;
