@@ -9,9 +9,9 @@ use Nemundo\Package\Bootstrap\Listing\BootstrapHyperlinkList;
 use Nemundo\Wiki\Data\Wiki\WikiReader;
 use Nemundo\Wiki\Parameter\WikiPageParameter;
 use Nemundo\Wiki\Site\WikiSite;
-use Nemundo\Content\View\AbstractContentList;
+use Nemundo\Content\View\AbstractContentListing;
 
-class WikiPageContentList extends AbstractContentList
+class WikiPageContentListing extends AbstractContentListing
 {
 
     public function getContent()
