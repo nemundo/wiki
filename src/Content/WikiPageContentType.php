@@ -28,7 +28,7 @@ class WikiPageContentType extends AbstractTreeContentType
 
         $this->typeId = 'b94ec710-d1bd-4430-8866-4a7f9a493c52';
         $this->typeLabel = 'Wiki Page';
-        $this->formClass = WikiPageContentForm::class;
+        $this->formClassList[] = WikiPageContentForm::class;
         //$this->listClass = WikiPageContentList::class;
         $this->viewSite = WikiViewSite::$site;
         $this->viewClassList[]  = WikiPageContentView::class;
