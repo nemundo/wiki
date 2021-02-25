@@ -15,7 +15,7 @@ class ContentViewPage extends AbstractTemplateDocument
 
         $parameter=new ContentParameter();
         $parameter->contentTypeCheck=false;
-        $contentType = $parameter->getContentType();
+        $contentType = $parameter->getContent();
         $contentType->getDefaultView($this);
 
         $table1 = new AdminLabelValueTable($this);
