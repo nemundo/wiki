@@ -9,7 +9,7 @@ use Nemundo\Content\App\Base\Collection\ContentAppContentTypeCollection;
 use Nemundo\Content\Install\ContentInstall;
 use Nemundo\Content\Setup\ContentTypeSetup;
 use Nemundo\Model\Setup\ModelCollectionSetup;
-use Nemundo\Project\Install\AbstractInstall;
+use Nemundo\App\Application\Type\Install\AbstractInstall;
 use Nemundo\User\Setup\UsergroupSetup;
 use Nemundo\Wiki\Content\WikiPageContentType;
 use Nemundo\Wiki\Data\WikiModelCollection;

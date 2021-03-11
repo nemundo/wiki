@@ -6,7 +6,7 @@ namespace Nemundo\Wiki\Install;
 
 use Nemundo\Model\Setup\ModelCollectionSetup;
 use Nemundo\Wiki\Data\WikiCollection;
-use Nemundo\Project\Install\AbstractUninstall;
+use Nemundo\App\Application\Type\Install\AbstractUninstall;
 
 class WikiUninstall extends AbstractUninstall
 {
